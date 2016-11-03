@@ -1,0 +1,72 @@
+<html ng-app = "myApp">
+   <head>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<style type="text/css">
+  .th1{
+    color:white;
+  }
+
+</style>
+      
+   </head>
+   <body ng-controller = "myController">
+
+     <!--  <div style = "height : 10%; border : 2px solid"> 
+        <h6>Client_Name:MyClient Client_id:mt123 Client_Acc: 12345 Technical_Skills:AngularJs No_Of_Resources:10 Last_Date:02/22/2017 Mode_Of_Employement:Permanant</h6>
+      </div>
+ -->
+      
+      <div style="margin-left:40px;margin-top:10px" class="form-group" >
+      <lable style="float: left;font-size:20px; color:#336699; for="sel1">
+         Reference : </lable>
+                    <select style="width:10.5em;margin-left:120px;" class="form-control" id="sel1">
+                        <option value="Hr">Human Resource</option>
+                    </select>
+
+            <input type="text" name="search" ng-model="search" placeholder="search here" style="float: right;width:250px;margin-top: 10px" class="form-control">
+      </div>
+<br><br>
+      <div class = "container">
+         <table style=" box-shadow: 10px 10px 10px"  class = "table table-hover table-bordered">
+           <thead style="background-color: #336699;color:#fffff; box-shadow:5px 5px 5px;">
+           	<tr> <th class="th1">Candidate Name</th>
+            <th class="th1">Candidate Id</th>
+            <th class="th1">Edu.Qual</th>
+            <th class="th1">Vendor Name</th>
+           	 <th class="th1">Client Id</th>
+             <th class="th1">Mode Of Employment</th>
+             <th class="th1">Select</th></tr>
+           </thead>
+
+           <tbody>
+              <tr ng-repeat = "candidates in candidateInfo | filter:search" >
+              	<td><span ng-model="employee.name">{{candidates.Cand_name}}</span></td>
+              	<td><span ng-model="employee.id"> {{candidates.Cand_id}}</span></td>
+              	<td><span ng-model="employee.qul">{{candidates.Cand_Qul}}</span></td>
+              	<td><span ng-model="employee.vname">{{candidates.Vender_Name}}</span></td>
+              	<td><span ng-model="employee.cid">{{candidates.Client_Id}}</span></td>
+                <td><span ng-model="employee.moe">{{candidates.M_O_E}}</span></td>
+              	<td><input type = "checkbox" name = "checkBox" value = "{{candidates._id}}"/></td> 
+              </tr>
+             <tr>
+                <td colspan = "7" align ="center">
+
+                    <button class="btn btn-info" ng-click="add('checkBox')">Submit</button> 
+               </td>
+            </tr>          	
+           </tbody>
+         </table>
+      </div>
+
+      <script type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+      <script type="text/javascript" src = "controller.js"></script>
+
+   </body>
+
+</html>
+
+
